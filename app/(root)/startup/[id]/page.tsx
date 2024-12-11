@@ -6,6 +6,7 @@ import { client } from './../../../../sanity/lib/client';
 import { formatDate } from '@/lib/utils';
 import Image from '@/node_modules/next/image';
 import markdownit from 'markdown-it';
+import View from '@/components/View';
 
 const md = markdownit();
 
@@ -57,6 +58,10 @@ export default async function Page({ params } : { params: Promise<{ id : string}
                     }
 
                 </div>
+                <hr />
+                <Suspense fallback={<Skeleton className="view_skeleton" />}>
+                    <View id={id} />
+                </Suspense>
             </section>
         </>
     )
